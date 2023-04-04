@@ -9,7 +9,7 @@ const PORT = process.env.PORT;
 
 
 app.get('/',function(req,res){
-res.send("Dashboard")
+res.send("")
 })
 
 app.use(express.json());
