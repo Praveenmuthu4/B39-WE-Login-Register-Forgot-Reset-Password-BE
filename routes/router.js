@@ -121,7 +121,7 @@ router.post("/sendpasswordlink", async (req, res) => {
   try {
     const userfind = await userdb.findOne({ email: email });
     const token = jwt.sign({ _id: userfind._id }, keysecret, {
-      expiresIn: "120s",
+      expiresIn: "5m",
     });
 
     const setusertoken = await userdb.findByIdAndUpdate(
@@ -135,7 +135,7 @@ router.post("/sendpasswordlink", async (req, res) => {
         from: process.env.EMAIL,
         to: email,
         subject: "Sending Email For password Reset",
-        text: `This Link Valid For 2 MINUTES http://localhost:8000/forgotpassword/${userfind.id}/${setusertoken.verifytoken}`,
+        text: `This Link Valid For 5 MINUTES http://localhost:8000/forgotpassword/${userfind.id}/${setusertoken.verifytoken}`,
       };
 
       transporter.sendMail(mailOptions, (error, info) => {
