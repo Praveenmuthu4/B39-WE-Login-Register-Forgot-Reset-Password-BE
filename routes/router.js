@@ -54,7 +54,7 @@ router.post("/login", async (req, res) => {
   const { email, password } = req.body;
 
   if (!email || !password) {
-    res.status(422).json({ error: "fill all the details" });
+    res.status(422).json({ message: "Invalid Email or Password" });
   }
 
   try {
